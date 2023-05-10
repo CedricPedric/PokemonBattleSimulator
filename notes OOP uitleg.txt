@@ -1,0 +1,23 @@
+notes OOP uitleg:
+
+OOP is een manier om de echte wereld te vertalen naar code. 
+OOP is data en functionaliteit combineren.
+Een class is een blauwdruk van een object en het object is het huis. (Design=Class/Product=Object)
+Constructor  A constructor is a method whose name is the same as the name of its type. 
+Field is Close to a variable its data
+Method is Gedrag AKA Functions
+
+
+Waarom OOP?
+
+Code blijft veranderen
+Makkelijker omdat
+
+te organiseren
+te veranderen
+uit te breiden
+ter onderhouden
+ervover te communiceren
+
+
+
