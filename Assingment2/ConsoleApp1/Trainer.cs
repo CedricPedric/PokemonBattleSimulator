@@ -10,7 +10,12 @@ namespace ConsoleApp1
     {   
       
         public string name = "Trainer";
+        public void setName(String name)
+        {
+            this.name = name;
+        }
         public List<Pokeball> belt = new List<Pokeball>();
+
         
     }
 }
