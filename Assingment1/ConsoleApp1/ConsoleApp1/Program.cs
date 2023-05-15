@@ -44,7 +44,7 @@ class Program
         {
             this.name = name;
         }
-        public void BattleCry()
+        public void battleCry()
         {
             Console.WriteLine(this.name + "!");
         }
