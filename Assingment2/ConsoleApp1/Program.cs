@@ -5,6 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        while (true) { 
         Charmander charmander = new Charmander("Charmander","Fire","Water"); //Default Charmander
 
         //Code to make the trainers
@@ -42,7 +43,13 @@ class Program
             Thread.Sleep(1000); //will sleep for 1 sec
         }
         //The End
-        Console.WriteLine("The Game Has Ended!");
+        Console.WriteLine("The Game Has Ended! Do you want to see it again? (Yes or No):");
+        userInput = Console.ReadLine();
+        if (userInput.ToLower() == "no")
+        {
+            break;
+        }
+        }
 
     }
 

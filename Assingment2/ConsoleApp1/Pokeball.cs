@@ -8,7 +8,7 @@ namespace ConsoleApp1
 {
         public class Pokeball{
         public Charmander charmander;
-
+            
         public Pokeball(Charmander charmander) {
             this.charmander = charmander;
         }
