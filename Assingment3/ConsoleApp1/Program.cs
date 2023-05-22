@@ -6,7 +6,6 @@ class Program
     static void Main(string[] args)
     {
         while (true) { 
-        Charmander charmander = new Charmander("Charmander","Fire","Water"); //Default Charmander
 
         //Code to make the trainers
         Trainer trainer1 = new Trainer();
@@ -23,13 +22,13 @@ class Program
 
         //Code to fill the belts with pokeballs
        
-        trainer1.belt.Add(new Pokeball(new Bulbasaur("Bulbasaur","Grass","Fire")));
-        trainer1.belt.Add(new Pokeball(new Charmander("Charmander", "Fire", "Water")));
-        trainer1.belt.Add(new Pokeball(new Squirtle("Squirtle", "Water", "Grass")));
+        trainer1.belt.Add(new Pokeball(new Bulbasaur("Bulbasaur 1")));
+        trainer1.belt.Add(new Pokeball(new Charmander("Charmander 1")));
+        trainer1.belt.Add(new Pokeball(new Squirtle("Squirtle 1")));
 
-        trainer2.belt.Add(new Pokeball(new Bulbasaur("Bulbasaur", "Grass", "Fire")));
-        trainer2.belt.Add(new Pokeball(new Charmander("Charmander", "Fire", "Water")));
-        trainer2.belt.Add(new Pokeball(new Squirtle("Squirtle", "Water", "Grass")));
+        trainer2.belt.Add(new Pokeball(new Bulbasaur("Bulbasaur 2")));
+        trainer2.belt.Add(new Pokeball(new Charmander("Charmander 2")));
+        trainer2.belt.Add(new Pokeball(new Squirtle("Squirtle 2")));
 
             //The "Battle"
             for (int i = 0; i < 3; i++)

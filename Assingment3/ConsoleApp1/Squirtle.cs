@@ -8,11 +8,11 @@ namespace ConsoleApp1
 {
     public class Squirtle: Pokemon
     {
-        public Squirtle(String name, String type, String weakness)
+        public Squirtle(string name) : base(name, "Water", "Grass") { }
+
+        public override void BattleCry()
         {
-            this.name = name;
-            this.type = type;
-            this.weakness = weakness;
+            Console.WriteLine("Squirtle!");
         }
     }
 }
