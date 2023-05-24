@@ -49,7 +49,7 @@ class Program
         Console.WriteLine("The Game Has Ended! Do you want to see it again? (Yes or No):");
         userInput = Console.ReadLine();
         if (userInput.ToLower() == "no")
-        {6
+        {
             break;
         }
         }

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public class Bulbasaur : Pokemon
+    public class Charmander : Pokemon
     {
-        public Bulbasaur(string name) : base(name, "Grass", "Fire") { }
+
+        public Charmander(string name) : base(name, "Fire", "Water") { }
 
         public override void BattleCry()
         {
-            Console.WriteLine("Bulbasaur!");
+            Console.WriteLine("Charmander!");
         }
-
     }
 }
