@@ -45,6 +45,8 @@ namespace ConsoleApp1
                 Console.WriteLine(trainer2.belt[i].pokemon.name);
             }
             Console.WriteLine("---------------");
+
+
             while (true)
             {
 

@@ -11,6 +11,12 @@ namespace ConsoleApp1
         public String name = "";
         public String type;
         public String weakness;
+        public enum types { 
+        Grass,
+        Fire,
+        Water
+        }
+
         
         public Pokemon(String name, String type, String weakness)
         {
@@ -21,6 +27,7 @@ namespace ConsoleApp1
 
         public abstract void BattleCry();
 
+        //setters and getters for the name field
         public string getName()
         {
             return name;
@@ -29,7 +36,7 @@ namespace ConsoleApp1
         {
             this.name = name;
         }
-
+        //setters and getters for the type field
         public string getType()
         {
             return type;
@@ -38,7 +45,7 @@ namespace ConsoleApp1
         {
             this.type = type;
         }
-
+        //setters and getters for the weakness field
         public string getWeakness()
         {
             return weakness;
