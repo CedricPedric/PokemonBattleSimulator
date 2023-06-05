@@ -8,26 +8,28 @@ namespace ConsoleApp1
 {
     public abstract class Pokemon
     {
-        public String name = "";
-        public String type;
-        public String weakness;
-        public enum types { 
+
+        //All the fiels I used
+        private String name = "";
+        public enum Types { 
         Grass,
         Fire,
         Water
         }
+        private readonly Types type;
+        private readonly Types weakness;
 
         
-        public Pokemon(String name, String type, String weakness)
+        public Pokemon(String name, Types type, Types weakness)
         {
             this.name = name;
             this.type = type;
             this.weakness = weakness;
         }
-
+  
         public abstract void BattleCry();
 
-        //setters and getters for the name field
+        //All The Get's and Set's
         public string getName()
         {
             return name;
@@ -36,23 +38,18 @@ namespace ConsoleApp1
         {
             this.name = name;
         }
-        //setters and getters for the type field
-        public string getType()
+        public Types getType()
         {
             return type;
         }
-        public void setType(String type)
-        {
-            this.type = type;
-        }
-        //setters and getters for the weakness field
-        public string getWeakness()
+        public Types getWeakness()
         {
             return weakness;
         }
-        public void setWeakness(String weakness)
+        
+        public bool isWeakAgainst(Pokemon pokemon)
         {
-            this.weakness = weakness;
+            return pokemon.getType() == this.getWeakness();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ConsoleApp1
     public class Charmander : Pokemon
     {
 
-        public Charmander(string name) : base(name, "Fire", "Water") { }
+        public Charmander(string name) : base(name, Types.Fire, Types.Water) { }
 
         public override void BattleCry()
         {

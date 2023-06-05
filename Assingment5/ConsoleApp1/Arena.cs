@@ -8,15 +8,17 @@ namespace ConsoleApp1
 {
     public class Arena
     {
-        public int rounds = 0;
-        public int battles = 0;
+        public static int rounds = 0;
+        public static int battles = 0;
 
-        public Trainer trainer1;
-        public Trainer trainer2;
+        private Trainer trainer1;
+        private Trainer trainer2;
+        private List<Pokeball> trainer1Belt;
+        private List<Pokeball> trainer2Belt;
         private int trainer1CurrentPokemon = 0;
         private int trainer2CurrentPokemon = 0;
-        public string whoWon = "";
 
+        private GameState whoWon;
         public Arena(Trainer trainer1, Trainer trainer2)
         {
             this.trainer1 = trainer1;
@@ -25,44 +27,49 @@ namespace ConsoleApp1
 
         public void Stuff()
         
-        {
-            //This randomizes the pokemon!
-
+        {   
+            //Put the belts in a field so that i dont have to keep calling the method
+            trainer1Belt = trainer1.getBelt();
+            trainer2Belt = trainer2.getBelt();
+            //Randomizes the pokemon!
             Random rand = new Random();
-            trainer1.belt = trainer1.belt.OrderBy(_ => rand.Next()).ToList();
-            trainer2.belt = trainer2.belt.OrderBy(_ => rand.Next()).ToList();
+            trainer1Belt = trainer1Belt.OrderBy(_ => rand.Next()).ToList();
+            trainer2Belt = trainer2Belt.OrderBy(_ => rand.Next()).ToList();
 
+            //Prints out the pokemon in their belt
             Console.WriteLine("---------------");
-            Console.WriteLine("Trainer 1's Pokemon in Order");
-            for (int i = 0; i < 3; i++)
+            Console.WriteLine(trainer1.getName() + "'s  Pokemon in Order");
+            for (int i = 0; i < trainer1Belt.Count; i++)
             {
-                Console.WriteLine(trainer1.belt[i].pokemon.name);
+                Console.WriteLine(trainer1Belt[i].getPokemonInPokeball().getName());
             }
             Console.WriteLine("---------------");
-            Console.WriteLine("Trainer 2's Pokemon in Order");
-            for (int i = 0; i < 3; i++)
+            Console.WriteLine(trainer2.getName() + "'s Pokemon in Order");
+            for (int i = 0; i < trainer2Belt.Count; i++)
             {
-                Console.WriteLine(trainer2.belt[i].pokemon.name);
+                Console.WriteLine(trainer2Belt[i].getPokemonInPokeball().getName());
             }
             Console.WriteLine("---------------");
+
+            Thread.Sleep(1000);
 
 
             while (true)
             {
 
-                if (trainer1.belt.Count == trainer1CurrentPokemon && trainer2.belt.Count == trainer1CurrentPokemon)
+                if (trainer1Belt.Count == trainer1CurrentPokemon && trainer2Belt.Count == trainer1CurrentPokemon)
                 {
                     Console.WriteLine("Its a Draw!");
                     battles++;
                     break;
                 }
-                else if (trainer1.belt.Count == trainer1CurrentPokemon )
+                else if (trainer1Belt.Count == trainer1CurrentPokemon )
                 {
                     Console.WriteLine("Trainer2 Won!");
                     battles++;
                     break;
                 }
-                else if (trainer2.belt.Count == trainer2CurrentPokemon )
+                else if (trainer2Belt.Count == trainer2CurrentPokemon )
                 {
                     Console.WriteLine("Trainer1 Won!");
                     battles++;
@@ -70,26 +77,28 @@ namespace ConsoleApp1
                 }
                 Console.WriteLine("---------------");
                 Console.WriteLine("Pokemon on the field!");
-                Console.WriteLine(trainer1.belt[trainer1CurrentPokemon].pokemon.name);
-                Console.WriteLine(trainer2.belt[trainer2CurrentPokemon].pokemon.name);
+                Console.WriteLine(trainer1Belt[trainer1CurrentPokemon].getPokemonInPokeball().getName());
+                Console.WriteLine(trainer2Belt[trainer2CurrentPokemon].getPokemonInPokeball().getName());
                 Console.WriteLine("---------------");
+                Thread.Sleep(1000);
 
                 Battle battle = new Battle();
-                whoWon = battle.BattleBitch(trainer1.belt[trainer1CurrentPokemon].pokemon, trainer2.belt[trainer2CurrentPokemon].pokemon);
-                if (whoWon == "Draw")
+                whoWon =  battle.BattleBitch(trainer1Belt[trainer1CurrentPokemon].getPokemonInPokeball(), trainer2Belt[trainer2CurrentPokemon].getPokemonInPokeball());
+                if (whoWon == GameState.Draw)
                 {
                     trainer1CurrentPokemon++;
                     trainer2CurrentPokemon++;
                 }
-                else if (whoWon == "Trainer1")
+                else if (whoWon == GameState.Trainer1)
                 {
                     trainer2CurrentPokemon++;
                 }
-                else if (whoWon == "Trainer2")
+                else if (whoWon == GameState.Trainer2)
                 {
                     trainer1CurrentPokemon++;
                 }
                 rounds++;
+                Thread.Sleep(1000);
             }
             Console.WriteLine("SCORES:");
             Console.WriteLine("rounds: " + rounds);

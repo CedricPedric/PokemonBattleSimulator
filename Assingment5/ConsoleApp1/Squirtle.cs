@@ -8,8 +8,7 @@ namespace ConsoleApp1
 {
     public class Squirtle: Pokemon
     {
-        public Squirtle(string name) : base(name, "Water", "Grass") { }
-
+        public Squirtle(string name) : base(name, Types.Water, Types.Grass) { }
         public override void BattleCry()
         {
             Console.WriteLine("Squirtle!");

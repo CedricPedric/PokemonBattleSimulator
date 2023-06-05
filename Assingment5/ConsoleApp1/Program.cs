@@ -13,23 +13,24 @@ class Program
             Console.WriteLine("Enter Trainer 1's Name:");
             string userInput = Console.ReadLine();
             trainer1.setName(userInput);
-            Console.WriteLine(trainer1.name);
 
             Trainer trainer2 = new Trainer();
             Console.WriteLine("Enter Trainer 2's Name:");
             userInput = Console.ReadLine();
             trainer2.setName(userInput);
-            Console.WriteLine(trainer2.name);
 
             //Code to fill the belts with pokeballs
 
-            trainer1.belt.Add(new Pokeball(new Charmander("Charmander 1")));
-            trainer1.belt.Add(new Pokeball(new Bulbasaur("Bulbasaur 1")));
-            trainer1.belt.Add(new Pokeball(new Squirtle("Squirtle 1")));
-
-            trainer2.belt.Add(new Pokeball(new Squirtle("Squirtle 2")));
-            trainer2.belt.Add(new Pokeball(new Charmander("Charmander 2")));
-            trainer2.belt.Add(new Pokeball(new Bulbasaur("Bulbasaur 2")));
+            trainer1.addPokemon(new Charmander("Charmander 1"));
+            trainer1.addPokemon(new Bulbasaur("Bulbasaur 1"));
+            trainer1.addPokemon(new Squirtle("Squirtle 1"));
+            trainer1.addPokemon(new Squirtle("Squirtle 2"));
+            trainer1.addPokemon(new Squirtle("Squirtle 3"));
+            trainer1.addPokemon(new Squirtle("Squirtle 4"));
+           
+            trainer2.addPokemon(new Charmander("Charmander 1"));
+            trainer2.addPokemon(new Bulbasaur("Bulbasaur 1"));
+            trainer2.addPokemon(new Squirtle("Squirtle 1"));
 
             //The "Battle"
             Arena arena = new Arena(trainer1, trainer2);

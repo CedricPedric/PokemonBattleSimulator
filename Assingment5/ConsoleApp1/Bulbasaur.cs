@@ -8,7 +8,7 @@ namespace ConsoleApp1
 {
     public class Bulbasaur : Pokemon
     {
-        public Bulbasaur(string name) : base(name, "Grass", "Fire") { }
+        public Bulbasaur(string name) : base(name, Types.Grass, Types.Fire) { }
 
         public override void BattleCry()
         {
