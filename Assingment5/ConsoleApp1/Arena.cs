@@ -8,7 +8,7 @@ namespace ConsoleApp1
 {
     public class Arena
     {
-        public static int rounds = 0;
+        static int rounds = 0;
         public static int battles = 0;
 
         private Trainer trainer1;
@@ -25,7 +25,7 @@ namespace ConsoleApp1
             this.trainer2 = trainer2;
         }
 
-        public void Stuff()
+        public void Start()
         
         {   
             //Put the belts in a field so that i dont have to keep calling the method
@@ -77,13 +77,13 @@ namespace ConsoleApp1
                 }
                 Console.WriteLine("---------------");
                 Console.WriteLine("Pokemon on the field!");
-                Console.WriteLine(trainer1Belt[trainer1CurrentPokemon].getPokemonInPokeball().getName());
-                Console.WriteLine(trainer2Belt[trainer2CurrentPokemon].getPokemonInPokeball().getName());
+                Console.WriteLine($"{trainer1.getName()} send out {trainer1Belt[trainer1CurrentPokemon].getPokemonInPokeball().getName()}");
+                Console.WriteLine($"{trainer2.getName()} send out {trainer2Belt[trainer2CurrentPokemon].getPokemonInPokeball().getName()}");
                 Console.WriteLine("---------------");
                 Thread.Sleep(1000);
 
                 Battle battle = new Battle();
-                whoWon =  battle.BattleBitch(trainer1Belt[trainer1CurrentPokemon].getPokemonInPokeball(), trainer2Belt[trainer2CurrentPokemon].getPokemonInPokeball());
+                whoWon =  battle.StartBattle(trainer1Belt[trainer1CurrentPokemon].getPokemonInPokeball(), trainer2Belt[trainer2CurrentPokemon].getPokemonInPokeball());
                 if (whoWon == GameState.Draw)
                 {
                     trainer1CurrentPokemon++;

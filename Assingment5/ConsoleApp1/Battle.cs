@@ -9,7 +9,7 @@ namespace ConsoleApp1
     public class Battle 
     {
  
-        public GameState BattleBitch(Pokemon trainer1Pokemon, Pokemon trainer2Pokemon )
+        public GameState StartBattle(Pokemon trainer1Pokemon, Pokemon trainer2Pokemon )
         {
             if (trainer1Pokemon.getType() == trainer2Pokemon.getType())
             {

@@ -34,7 +34,7 @@ class Program
 
             //The "Battle"
             Arena arena = new Arena(trainer1, trainer2);
-            arena.Stuff();
+            arena.Start();
             //The End
             Console.WriteLine("The Game Has Ended! Do you want to see it again? (Yes or No):");
             userInput = Console.ReadLine();

@@ -23,6 +23,10 @@ namespace ConsoleApp1
         {
             this.name = name;
         }
+        public string getName() { 
+        
+            return this.name;   
+        }
         public void BattleCry()
         {
             Console.WriteLine(this.name + "!");
