@@ -8,8 +8,8 @@ namespace ConsoleApp1
 {
     public class Arena
     {
-        static int rounds = 0;
-        public static int battles = 0;
+        private static int roundsCount;
+        private static int battleCounter;
 
         private Trainer trainer1;
         private Trainer trainer2;
@@ -19,11 +19,32 @@ namespace ConsoleApp1
         private int trainer2CurrentPokemon = 0;
 
         private GameState whoWon;
+
         public Arena(Trainer trainer1, Trainer trainer2)
         {
             this.trainer1 = trainer1;
             this.trainer2 = trainer2;
         }
+        public int getBattlesCounter()
+        {
+            return Arena.battleCounter;
+        }
+
+        public static void increaseBattleCounter() {
+            Arena.battleCounter++;
+        }
+
+        public int getRoundCounter()
+        {
+            return Arena.roundsCount;
+        }
+
+        public static void increaseRoundCounter()
+        {
+            Arena.roundsCount++;
+        }
+
+
 
         public void Start()
         
@@ -60,49 +81,56 @@ namespace ConsoleApp1
                 if (trainer1Belt.Count == trainer1CurrentPokemon && trainer2Belt.Count == trainer1CurrentPokemon)
                 {
                     Console.WriteLine("Its a Draw!");
-                    battles++;
+                    increaseBattleCounter();
                     break;
                 }
                 else if (trainer1Belt.Count == trainer1CurrentPokemon )
                 {
-                    Console.WriteLine("Trainer2 Won!");
-                    battles++;
+                    Console.WriteLine($"{trainer2.getName()} Won!");
+                    increaseBattleCounter();
                     break;
                 }
                 else if (trainer2Belt.Count == trainer2CurrentPokemon )
                 {
-                    Console.WriteLine("Trainer1 Won!");
-                    battles++;
+                    Console.WriteLine($"{trainer1.getName()} Won!");
+                    increaseBattleCounter();
                     break;
                 }
                 Console.WriteLine("---------------");
                 Console.WriteLine("Pokemon on the field!");
-                Console.WriteLine($"{trainer1.getName()} send out {trainer1Belt[trainer1CurrentPokemon].getPokemonInPokeball().getName()}");
-                Console.WriteLine($"{trainer2.getName()} send out {trainer2Belt[trainer2CurrentPokemon].getPokemonInPokeball().getName()}");
+                Console.WriteLine($"{trainer1.getName()} {trainer1Belt[trainer1CurrentPokemon].openPokeball()}");
+                Console.WriteLine($"{trainer2.getName()} {trainer2Belt[trainer2CurrentPokemon].openPokeball()}");
                 Console.WriteLine("---------------");
                 Thread.Sleep(1000);
 
                 Battle battle = new Battle();
+                trainer1Belt[trainer1CurrentPokemon].openPokeball();
+                trainer2Belt[trainer2CurrentPokemon].openPokeball();
                 whoWon =  battle.StartBattle(trainer1Belt[trainer1CurrentPokemon].getPokemonInPokeball(), trainer2Belt[trainer2CurrentPokemon].getPokemonInPokeball());
                 if (whoWon == GameState.Draw)
                 {
+                    Console.WriteLine($"{trainer1.getName()} {trainer1Belt[trainer1CurrentPokemon].closePokeball()}");
+                    Console.WriteLine($"{trainer2.getName()} {trainer2Belt[trainer2CurrentPokemon].closePokeball()}");
                     trainer1CurrentPokemon++;
                     trainer2CurrentPokemon++;
                 }
                 else if (whoWon == GameState.Trainer1)
                 {
+                    Console.WriteLine($"{trainer2.getName()} {trainer2Belt[trainer2CurrentPokemon].closePokeball()}");
                     trainer2CurrentPokemon++;
                 }
                 else if (whoWon == GameState.Trainer2)
                 {
+                    Console.WriteLine($"{trainer1.getName()} {trainer1Belt[trainer1CurrentPokemon].closePokeball()}");
                     trainer1CurrentPokemon++;
                 }
-                rounds++;
+                increaseRoundCounter();
                 Thread.Sleep(1000);
             }
+
             Console.WriteLine("SCORES:");
-            Console.WriteLine("rounds: " + rounds);
-            Console.WriteLine("battles: " + battles);
+            Console.WriteLine("rounds: " +  getRoundCounter());
+            Console.WriteLine("battles: " + getBattlesCounter());
         }
     }
 }
